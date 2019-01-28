@@ -34,7 +34,9 @@
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7.ks<enter><wait>"
       ],
-      "shutdown_command": "sudo -S /sbin/halt -h -p"
+      "shutdown_command": "sudo -S /sbin/halt -h -p",
+
+      "disk_type_id": "0"
     }
   ],
   
