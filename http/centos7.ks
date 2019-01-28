@@ -22,6 +22,11 @@ user --name=vagrant --password=vagrant
 
 reboot
 
+# Package Repositories
+repo --name base --baseurl http://mirror.centos.org/centos/7/os/x86_64
+repo --name extras --baseurl http://mirror.centos.org/centos/7/extras/x86_64/
+repo --name updates --baseurl http://mirror.centos.org/centos/7/updates/x86_64/
+
 %packages --instLangs=en
 deltarpm
 bash-completion
