@@ -9,4 +9,6 @@ builds/
 # For built boxes
 *.box
 
+*.log
+
 # End of https://www.gitignore.io/api/packer
