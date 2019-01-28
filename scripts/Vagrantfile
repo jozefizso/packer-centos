@@ -1,0 +1,7 @@
+Vagrant.configure("2") do |config|
+  config.vm.provider "vmware_desktop" do |v|
+    # Use paravirtualized virtual hardware on VMware hypervisors
+    v.vmx['scsi0.virtualDev'] = 'pvscsi'
+    v.vmx['ethernet0.virtualDev'] = 'vmxnet3'
+  end
+end

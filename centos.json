@@ -42,15 +42,25 @@
       ],
       "shutdown_command": "sudo -S /sbin/halt -h -p",
 
-      "disk_type_id": "0"
+      "version": "11",
+      "disk_type_id": "0",
+      "disk_size": "{{user `disk_size`}}",
+
+      "usb": false,
+
+      "vmx_data": {
+        "scsi0.virtualDev": "pvscsi",
+        "ethernet0.virtualDev": "vmxnet3"
+      }
     }
   ],
   
   "post-processors": [
     {
+      "type": "vagrant",
+      "compression_level": "9",
       "output": "centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-vagrant-{{user `redhat_build`}}_{{user `artifact_revision`}}.box",
-      "compression_level": "6",
-      "type": "vagrant"
+      "vagrantfile_template": "scripts/Vagrantfile"
     }
   ]
 }
