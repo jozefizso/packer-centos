@@ -3,10 +3,12 @@
     "iso_url": "",
     "iso_checksum": "",
     "iso_checksum_type": "sha256",
-    "redhat_release": "",
+    "redhat_release": "7.6",
+    "redhat_build": "1810",
     "redhat_platform": "x86_64",
     "artifact_description": "",
     "artifact_version": "",
+    "artifact_revision": "01",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
@@ -16,7 +18,9 @@
   "builders": [
     {
       "type": "vmware-iso",
-      "name": "centos-{{user `redhat_release`}}",
+      "name": "centos-{{user `redhat_release`}}-vmware_desktop",
+      "vm_name": "centos7",
+      "vmdk_name": "disk1",
 
       "cpus": "2",
       "memory": "1024",
@@ -44,7 +48,7 @@
   
   "post-processors": [
     {
-      "output": "centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-minimal.box",
+      "output": "centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-vagrant-{{user `redhat_build`}}_{{user `artifact_revision`}}.box",
       "compression_level": "6",
       "type": "vagrant"
     }
