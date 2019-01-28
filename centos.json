@@ -9,6 +9,7 @@
     "artifact_version": "",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
+    "ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
     "disk_size": "20480"
   },
 
@@ -29,7 +30,8 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
 
       "ssh_username": "{{user `ssh_username`}}",
-      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_private_key_file": "{{user `ssh_private_key_file`}}",
+      "ssh_wait_timeout": "15m",
 
       "boot_command": [
         "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos7.ks<enter><wait>"
