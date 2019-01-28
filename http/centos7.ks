@@ -15,8 +15,8 @@ services --enabled=vmtoolsd
 # even in environments like virtualbox that emulate a real NW card
 bootloader --timeout=1 --append="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop"
 zerombr
-clearpart --all --drives=vda
-part / --fstype=xfs --asprimary --size=1024 --grow --ondisk=vda
+clearpart --all --drives=sda
+part / --fstype=xfs --asprimary --size=1024 --grow --ondisk=sda
 
 user --name=vagrant --password=vagrant
 
