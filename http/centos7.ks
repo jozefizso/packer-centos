@@ -26,8 +26,12 @@ reboot
 repo --name base --baseurl http://mirror.centos.org/centos/7/os/x86_64
 repo --name extras --baseurl http://mirror.centos.org/centos/7/extras/x86_64/
 repo --name updates --baseurl http://mirror.centos.org/centos/7/updates/x86_64/
+repo --name=elrepo-kernel --baseurl=http://elrepo.org/linux/kernel/el7/x86_64/
+repo --name=elrepo-release --baseurl=http://elrepo.org/linux/elrepo/el7/x86_64/
 
+# install with kernel-lt (long-term support release)
 %packages --instLangs=en
+kernel-lt
 deltarpm
 bash-completion
 man-pages
@@ -39,6 +43,8 @@ chrony
 yum-utils
 hyperv-daemons
 open-vm-tools
+# remove old kernel
+-kernel
 # Vagrant boxes aren't normally visible, no need for Plymouth
 -plymouth
 # Microcode updates cannot work in a VM
@@ -160,8 +166,8 @@ restorecon -f - <<EOF
 /etc/dracut.conf.d/nofloppy.conf
 EOF
 
-# Rerun dracut for the installed kernel (not the running kernel):
-KERNEL_VERSION=$(rpm -q kernel --qf '%{version}-%{release}.%{arch}\n')
+# Rerun dracut for the installed kernel-lt (not the running kernel):
+KERNEL_VERSION=$(rpm -q kernel-lt --qf '%{version}-%{release}.%{arch}\n')
 dracut -f /boot/initramfs-${KERNEL_VERSION}.img ${KERNEL_VERSION}
 
 # Seal for deployment
