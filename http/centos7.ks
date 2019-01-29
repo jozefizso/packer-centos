@@ -30,7 +30,7 @@ repo --name=elrepo-kernel --baseurl=http://elrepo.org/linux/kernel/el7/x86_64/
 repo --name=elrepo-release --baseurl=http://elrepo.org/linux/elrepo/el7/x86_64/
 
 # install with kernel-lt (long-term support release)
-%packages --instLangs=en
+%packages --instLangs=en --excludedocs
 kernel-lt
 deltarpm
 bash-completion
@@ -174,6 +174,8 @@ KERNEL_VERSION=$(rpm -q kernel-lt --qf '%{version}-%{release}.%{arch}\n')
 dracut -f /boot/initramfs-${KERNEL_VERSION}.img ${KERNEL_VERSION}
 
 # Seal for deployment
+yum clean all
+
 rm -rf /etc/ssh/ssh_host_*
 hostnamectl set-hostname localhost.localdomain
 rm -rf /etc/udev/rules.d/70-*
