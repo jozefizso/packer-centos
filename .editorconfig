@@ -1,0 +1,9 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# kickstart files require Unix-style newlines
+[*.ks]
+end_of_line = lf
+insert_final_newline = true

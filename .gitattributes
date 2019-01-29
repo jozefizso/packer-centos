@@ -1,0 +1,2 @@
+*.ks text=auto eol=lf
+scripts/* text=auto eol=lf
