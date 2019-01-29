@@ -91,6 +91,9 @@ chmod 600 /swapfile
 mkswap /swapfile
 echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 
+# remove the linux-firmware manually as it is added by the kernel-lt
+yum remove -y linux-firmware
+
 # sudo
 echo "%vagrant ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vagrant
 chmod 0440 /etc/sudoers.d/vagrant
