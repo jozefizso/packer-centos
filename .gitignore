@@ -7,7 +7,9 @@ packer_cache/
 builds/
 
 # For built boxes
+boxes/
 *.box
+*.ova
 
 *.log
 

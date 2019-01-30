@@ -18,7 +18,7 @@
   "builders": [
     {
       "type": "vmware-iso",
-      "name": "centos-{{user `redhat_release`}}-vmware_desktop",
+      "name": "centos-vmware",
       "vm_name": "centos7",
       "vmdk_name": "disk1",
 
@@ -59,8 +59,17 @@
     {
       "type": "vagrant",
       "compression_level": "9",
-      "output": "centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-vagrant-{{user `redhat_build`}}_{{user `artifact_revision`}}.box",
+      "output": "boxes/centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-vagrant-{{user `redhat_build`}}_{{user `artifact_revision`}}.box",
       "vagrantfile_template": "scripts/Vagrantfile"
+    },
+    {
+      "type": "shell-local",
+      "inline": [
+        "ovftool --diskMode=thin --compress=9 --name=\"CentOS {{user `redhat_release`}}\" --prop:product=\"CentOS image\" --prop:version=\"{{user `redhat_release`}}.{{user `redhat_build`}}\" --prop:fullVersion=\"{{user `redhat_release`}}.{{user `redhat_build`}} r{{user `artifact_revision`}}\" --annotation=\"CentOS {{user `redhat_release`}}.{{user `redhat_build`}}-{{user `redhat_platform`}} (revision {{user `artifact_revision`}})\" \"builds/centos7.vmx\" \"boxes/centos-{{user `redhat_release`}}-{{user `redhat_build`}}_{{user `artifact_revision`}}.ova\""
+      ],
+      "only": [
+        "centos-vmware"
+      ]
     }
   ]
 }
