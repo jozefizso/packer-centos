@@ -59,13 +59,13 @@
     {
       "type": "vagrant",
       "compression_level": "9",
-      "output": "boxes/centos-{{user `redhat_release`}}-{{user `redhat_platform`}}-vagrant-{{user `redhat_build`}}_{{user `artifact_revision`}}.box",
+      "output": "boxes/centos-{{user `redhat_release`}}.{{user `redhat_build`}}{{user `artifact_revision`}}-{{user `redhat_platform`}}.box",
       "vagrantfile_template": "scripts/Vagrantfile"
     },
     {
       "type": "shell-local",
       "inline": [
-        "ovftool --diskMode=thin --compress=9 --name=\"CentOS {{user `redhat_release`}}\" --prop:product=\"CentOS image\" --prop:version=\"{{user `redhat_release`}}.{{user `redhat_build`}}\" --prop:fullVersion=\"{{user `redhat_release`}}.{{user `redhat_build`}} r{{user `artifact_revision`}}\" --annotation=\"CentOS {{user `redhat_release`}}.{{user `redhat_build`}}-{{user `redhat_platform`}} (revision {{user `artifact_revision`}})\" \"builds/centos7.vmx\" \"boxes/centos-{{user `redhat_release`}}-{{user `redhat_build`}}_{{user `artifact_revision`}}.ova\""
+        "ovftool --diskMode=thin --compress=9 --name=\"CentOS {{user `redhat_release`}}\" --prop:product=\"CentOS image\" --prop:version=\"{{user `redhat_release`}}.{{user `redhat_build`}}{{user `artifact_revision`}}\" --prop:fullVersion=\"{{user `redhat_release`}}.{{user `redhat_build`}} r{{user `artifact_revision`}}\" --annotation=\"CentOS {{user `redhat_release`}}.{{user `redhat_build`}}-{{user `redhat_platform`}} (revision {{user `artifact_revision`}})\" \"builds/centos7.vmx\" \"boxes/centos-{{user `redhat_release`}}.{{user `redhat_build`}}{{user `artifact_revision`}}.ova\""
       ],
       "only": [
         "centos-vmware"
