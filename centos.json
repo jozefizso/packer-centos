@@ -12,7 +12,7 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_private_key_file": "~/.vagrant.d/insecure_private_key",
-    "disk_size": "20480"
+    "disk_size": "40960"
   },
 
   "builders": [
