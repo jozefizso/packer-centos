@@ -26,8 +26,6 @@ reboot
 repo --name base --baseurl http://mirror.centos.org/centos/7/os/x86_64
 repo --name extras --baseurl http://mirror.centos.org/centos/7/extras/x86_64/
 repo --name updates --baseurl http://mirror.centos.org/centos/7/updates/x86_64/
-repo --name=elrepo-kernel --baseurl=http://elrepo.org/linux/kernel/el7/x86_64/
-repo --name=elrepo-release --baseurl=http://elrepo.org/linux/elrepo/el7/x86_64/
 
 %packages --instLangs=en --excludedocs
 deltarpm
