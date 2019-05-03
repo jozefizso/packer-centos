@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/packer
 # Edit at https://www.gitignore.io/?templates=packer
 
+.env.cmd
+
 ### Packer ###
 # Cache objects
 packer_cache/
