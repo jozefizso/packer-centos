@@ -170,6 +170,13 @@ EOF
 KERNEL_VERSION=$(rpm -q kernel --qf '%{version}-%{release}.%{arch}\n')
 dracut -f /boot/initramfs-${KERNEL_VERSION}.img ${KERNEL_VERSION}
 
+
+# Workaround for ESXi vmtoolsd issue with CentOS 7.6
+# See https://github.com/vmware/open-vm-tools/issues/311#issuecomment-449505108
+cat > /etc/centos-release << EOF
+CentOS Linux release 7.6 (Core)
+EOF
+
 # Seal for deployment
 yum clean all
 
