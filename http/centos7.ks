@@ -177,8 +177,12 @@ cat > /etc/centos-release << EOF
 CentOS Linux release 7.6 (Core)
 EOF
 
+# install cloud-init for vmware integration
+yum install -y https://github.com/vmware/cloud-init-vmware-guestinfo/releases/download/v1.1.0/cloud-init-vmware-guestinfo-1.1.0-1.el7.noarch.rpm
+
 # Seal for deployment
 yum clean all
+cloud-init clean
 
 rm -rf /etc/ssh/ssh_host_*
 hostnamectl set-hostname localhost.localdomain
